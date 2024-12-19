@@ -13,13 +13,13 @@ import { CommonModule } from '@angular/common';
   imports: [RouterLink, CommonModule]
 })
 export class HeaderComponent {
-  user$: Observable<AuthUser | null>;
+  //user$: Observable<AuthUser | null>;
 
-  get isLoggedIn() {
-    return this.userService.isLogged;
-  }
   constructor(public userService: UserService, private router: Router) {
-    this.user$ = this.userService.user$;
+    //this.user$ = this.userService.user$;
+  }
+  get isLoggedIn(): boolean {
+    return this.userService.isLogged;
   }
 
 

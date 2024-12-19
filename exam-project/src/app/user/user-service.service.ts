@@ -9,90 +9,54 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService{
   private user$$ = new BehaviorSubject<AuthUser | null>(null)
-  public user$ = this.user$$.asObservable();
-
-  API_URL = 'http://localhost:3000/api'
+  private user$ = this.user$$.asObservable();
 
   USER_KEY = '[user]';
-  user: AuthUser | null = this.getUserFromLocalStorage();
-  // userSubscription: Subscription | null = null
-  
-  constructor(private http: HttpClient) {}
+  user: AuthUser | null = null;
+  userSubscription: Subscription | null = null
 
   get isLogged(): boolean {
     return !!this.user;
   }
 
-
-  // login(email: string, password: string) {
-
-  //   return this.http
-  //   .post<AuthUser>(`${this.API_URL}/login`, { email, password }, { withCredentials: true })
-  //   .pipe(tap((user) => this.user$$.next(user)));
-
-  // }
-
-  // register(username: string, email: string, tel: string, password: string, rePassword: string) {
-
-  //   return this.http
-  //   .post<AuthUser>(`${this.API_URL}/register`, { username, email, tel, password, rePassword}, { withCredentials: true })
-  //   .pipe(tap((user) => this.user$$.next(user)));
-
-  // }
-
-  // logout() {
-  //   return this.http.post(`${this.API_URL}/logout`, { withCredentials: true })
-  //   .pipe(tap((user) => this.user$$.next(null)));
-
-  // }
-  login(email: string, password: string): Observable<AuthUser> {
-    return this.http.post<AuthUser>(`${this.API_URL}/login`, { email, password });
+  constructor(private http: HttpClient) {
+    this.userSubscription = this.user$.subscribe((user) => {
+      this.user = user
+    })
   }
 
-  register(username: string, email: string, tel: string, password: string, rePassword: string): Observable<AuthUser> {
-    return this.http.post<AuthUser>(`${this.API_URL}/register`, { username, email, tel, password, rePassword });
+  login(email: string, password: string) {
+
+    return this.http
+    .post<AuthUser>('/api/login', { email, password })
+    .pipe(tap((user) => this.user$$.next(user)));
+
   }
 
-  logout(): Observable<void> {
-    return this.http.post<void>(`${this.API_URL}/logout`, {});
-  }
-  setUser(user: AuthUser): void {
-    this.user$$.next(user);
-    this.saveUserToLocalStorage(user);
+  register(username: string, email: string, tel: string, password: string, rePassword: string) {
+
+    return this.http
+    .post<AuthUser>('/api/register', { username, email, tel, password, rePassword})
+    .pipe(tap((user) => this.user$$.next(user)));
+
   }
 
-  clearUser(): void {
-    this.user$$.next(null);
-    this.clearUserFromLocalStorage();
-  }
+  logout() {
+    return this.http.post('/api/logout', {})
+    .pipe(tap((user) => this.user$$.next(null)));
 
-  private saveUserToLocalStorage(user: AuthUser | null): void {
-    if (user) {
-      localStorage.setItem(this.USER_KEY, JSON.stringify(user));
-    } else {
-      localStorage.removeItem(this.USER_KEY);
-    }
-  }
-
-  private getUserFromLocalStorage(): AuthUser | null {
-    const user = localStorage.getItem(this.USER_KEY);
-    return user ? JSON.parse(user) : null;
-  }
-
-  private clearUserFromLocalStorage(): void {
-    localStorage.removeItem(this.USER_KEY);
   }
 
   getProfile() {
     return this.http
-    .get<AuthUser>(`${this.API_URL}/users/profile`)
+    .get<AuthUser>('/api/users/profile')
     .pipe(tap((user) => this.user$$.next(user)));
 
   }
 
   updateProfile(username: string, email: string, tel: string) {
     return this.http
-    .put<AuthUser>(`${this.API_URL}/users/profile`, {username, email, tel})
+    .put<AuthUser>(`/api/users/profile`, {username, email, tel})
     .pipe(tap((user) => this.user$$.next(user)));
 
   }

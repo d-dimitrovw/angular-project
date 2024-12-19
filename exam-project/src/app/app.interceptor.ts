@@ -1,27 +1,30 @@
+import { HttpInterceptorFn } from '@angular/common/http';
+import { catchError } from 'rxjs';
 import { inject } from '@angular/core';
-import { HttpEvent, HttpInterceptorFn, HttpRequest, HttpHandlerFn, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { UserService } from './user/user-service.service';
-import { AuthUser } from './types/user';
+import { Router } from '@angular/router';
 
-export const AuthInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> => {
-  const userService = inject(UserService);
+const apiUrl = 'http://localhost:3000/api';
+const API = '/api';
 
-  const clonedRequest = req.clone({
-    withCredentials: true
-  });
+export const appInterceptor: HttpInterceptorFn = (req, next) => {
 
-  return next(clonedRequest).pipe(
-    tap(event => {
-      if (event instanceof HttpResponse) {
-        if (event.url?.includes('/login') || event.url?.includes('/register')) {
-          const user = event.body as AuthUser;
-          userService.setUser(user);
-        } else if (event.url?.includes('/logout')) {
-          userService.clearUser();
-        }
+  if (req.url.startsWith(API)) {
+    req = req.clone({
+      url: req.url.replace(API, apiUrl),
+      withCredentials: true
+    });
+  }
+
+  const router = inject(Router)
+
+  return next(req).pipe(
+    catchError((err) => {
+      if(err.status === 401) {
+        router.navigate(['/login'])
+      } else {
+        router.navigate(['/error'])
       }
+      return [err]
     })
   );
 };
