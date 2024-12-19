@@ -7,6 +7,7 @@ import { TopicDetailsComponent } from './topics/topic-details/topic-details.comp
 import { AuthGuard } from './guards/auth.guard';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AddTopicComponent } from './topics/add-topic/add-topic.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -26,6 +27,7 @@ export const routes: Routes = [
     ],
   },
   { path: 'add-topic', component: AddTopicComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
   { path: '**', component: ErrorPageComponent },
 ];

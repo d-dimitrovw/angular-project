@@ -1,0 +1,55 @@
+@if(!editMode){
+
+<div class="profile-container">
+  <h2 class="profile-header">Profile Details</h2>
+  <div class="profile-detail">
+    <label class="profile-label">Username:</label>
+    <span class="profile-value">{{ profileDetails.username }}</span>
+  </div>
+  <div class="profile-detail">
+    <label class="profile-label">Email:</label>
+    <span class="profile-value">{{ profileDetails.email }}</span>
+  </div>
+  <div class="profile-detail">
+    <label class="profile-label">Telephone:</label>
+    <span class="profile-value">{{ profileDetails.tel }}</span>
+  </div>
+  <button class="btn btn-primary" (click)="editProfile()">Edit</button>
+</div>
+} @else {
+<div class="profile-container">
+  <h2 class="profile-header">Edit Profile</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="profile-detail">
+      <label class="profile-label" for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        #inputUsername
+        formControlName="username"
+        required
+      />
+    </div>
+    <div class="profile-detail">
+      <label class="profile-label" for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        #inputEmail
+        formControlName="email"
+        required
+      />
+    </div>
+    <div class="profile-detail">
+      <label class="profile-label" for="tel">Telephone:</label>
+      <input type="tel" id="tel" name="tel" #inputTel formControlName="tel" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="cancelEdit()">
+      Cancel
+    </button>
+  </form>
+</div>
+}
