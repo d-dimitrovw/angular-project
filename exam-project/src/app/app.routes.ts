@@ -13,8 +13,8 @@ import { AboutComponent } from './about/about.component';
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   //   { path: 'topics', component: TopicsListComponent},
   //   { path: 'topics/:id', component: TopicDetailsComponent, canActivate: [AuthGuard] }
   {
