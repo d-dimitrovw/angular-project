@@ -35,6 +35,15 @@
         required
       />
     </div>
+    @if(form.get('username')?.touched){
+    <div>
+      @if(form.get('username')?.errors?.['required']) {
+      <p class="error">Username is required!</p>
+      } @if(form.get('username')?.errors?.['minlength']) {
+      <p class="error">Username must be at least 5 characters!</p>
+      }
+    </div>
+    }
     <div class="profile-detail">
       <label class="profile-label" for="email">Email:</label>
       <input
@@ -43,9 +52,19 @@
         name="email"
         #inputEmail
         formControlName="email"
+        email
         required
       />
     </div>
+    @if(form.get('email')?.touched){
+    <div>
+      @if(form.get('email')?.errors?.['required']) {
+      <p class="error">Email is required!</p>
+      } @if(form.get('email')?.errors?.['email']) {
+      <p class="error">Email is not valid!</p>
+      }
+    </div>
+    }
     <div class="profile-detail">
       <label class="profile-label" for="tel">Telephone:</label>
       <input type="tel" id="tel" name="tel" #inputTel formControlName="tel" />

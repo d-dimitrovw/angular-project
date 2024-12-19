@@ -9,9 +9,19 @@
         name="email"
         ngModel
         #inputEmail="ngModel"
+        email
         required
       />
     </div>
+    @if(inputEmail?.touched){
+    <div>
+      @if(inputEmail?.errors?.['required']) {
+      <p class="error">Email is required!</p>
+      } @if(inputPassword?.errors?.['email']) {
+      <p class="error">Email is invalid!</p>
+      }
+    </div>
+    }
     <div class="form-group">
       <label for="password">Password</label>
       <input
@@ -20,9 +30,19 @@
         name="password"
         ngModel
         #inputPassword="ngModel"
+        minlength="5"
         required
       />
     </div>
+    @if(inputPassword?.touched){
+    <div>
+      @if(inputPassword?.errors?.['required']) {
+      <p class="error">Password is required!</p>
+      } @if(inputPassword?.errors?.['minlength']) {
+      <p class="error">Password must be at least 5 characters!</p>
+      }
+    </div>
+    }
     <button type="submit" class="login-button">Login</button>
   </form>
   <p class="register-link">

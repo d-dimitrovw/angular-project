@@ -115,4 +115,11 @@ input:focus {
     line-height: 1.5;
 }
 
+.error {
+    color: red;
+    font-size: 0.9em; /* Slightly smaller text size for subtle emphasis */
+    font-weight: bold;
+    margin-top: 5px; /* Add spacing from the element above */
+    text-align: left; /* Aligns the text to the left (default) */
+}
 
