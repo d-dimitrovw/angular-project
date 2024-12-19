@@ -64,6 +64,18 @@ main h2 {
   color: #333;
   margin: 20px 0;
 }
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em 0;
+}
+
+.logo-wrap > img {
+  height: 20vh;
+  margin-right: 3vw;
+  margin-left: -2vw;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
