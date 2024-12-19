@@ -14,11 +14,12 @@ export class RegisterComponent {
   constructor(private userService: UserService, private router: Router){}
   register(form: NgForm) {
     if (form.invalid) {
+      console.log('Invalid form');
+      
       return;
     }
 
     const {username, email, tel, password, rePassword} = form.value;
-    
 
     this.userService
     .register(username, email, tel, password, rePassword)

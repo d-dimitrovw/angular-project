@@ -104,5 +104,27 @@ body {
     border-color: #234465;
     box-shadow: 0 0 5px rgba(35, 68, 101, 0.5);
 }
+.commentate button {
+    padding: 10px 15px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+    background: #234465;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-left: 10px;
+}
+
+.commentate button:hover {
+    background: #5678a6;
+    transform: scale(1.05);
+}
+
+.commentate button:active {
+    background: #1a2e4f;
+    transform: scale(1);
+}
 
 

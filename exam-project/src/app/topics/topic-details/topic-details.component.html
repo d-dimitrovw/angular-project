@@ -5,7 +5,7 @@
   <div class="author">
     <!-- <h3>{{ topic.userId?.username }}</h3> -->
   </div>
-  <div class="date">{{ topic.created_at }}</div>
+  <div class="date">{{ topic.created_at | date : "yyyy-mm-dd hh:mm:ss" }}</div>
 </div>
 <div class="comment-title">
   <h2>Comments:</h2>

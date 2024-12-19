@@ -1,1 +1,26 @@
-<p>add-topic works!</p>
+<form class="topic-form" #form="ngForm" (ngSubmit)="submitTopic(form)">
+  <div class="form-group">
+    <label for="title" class="form-label">Title:</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      class="form-input"
+      ngModel
+      #inputTitle="ngModel"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="text" class="form-label">Text:</label>
+    <textarea
+      id="text"
+      name="text"
+      class="form-textarea"
+      ngModel
+      #inputText="ngModel"
+      required
+    ></textarea>
+  </div>
+  <button type="submit" class="form-button">Submit</button>
+</form>

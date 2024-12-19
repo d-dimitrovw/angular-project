@@ -4,11 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { TopicService } from '../../topic.service';
 import { UserService } from '../../user/user-service.service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-topic-details',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, DatePipe],
   templateUrl: './topic-details.component.html',
   styleUrl: './topic-details.component.css'
 })

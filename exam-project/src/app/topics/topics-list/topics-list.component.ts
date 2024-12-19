@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Topic } from '../../types/topic';
 import { TopicService } from '../../topic.service';
 import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-topics-list',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
   templateUrl: './topics-list.component.html',
   styleUrl: './topics-list.component.css'
 })
