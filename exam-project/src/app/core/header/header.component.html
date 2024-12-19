@@ -10,9 +10,21 @@
         <li><a href="#topics">Topics</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
+        @if(isLoggedIn){
+        <li><a (click)="logout()" class="logout-button">Logout</a></li>
+        } @else {
         <li><a routerLink="/register">Register</a></li>
         <li><a routerLink="/login">Login</a></li>
-        <li><a (click)="logout()" class="logout-button">Logout</a></li>
+        }
+        <!-- <ng-container *ngIf="user$ | async as user; else loggedOut">
+          <li>
+            <button (click)="logout()" class="logout-button">Logout</button>
+          </li>
+        </ng-container>
+        <ng-template #loggedOut>
+          <li><a routerLink="/register">Register</a></li>
+          <li><a routerLink="/login">Login</a></li>
+        </ng-template> -->
       </ul>
     </nav>
   </div>

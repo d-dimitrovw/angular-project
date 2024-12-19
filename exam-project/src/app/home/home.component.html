@@ -9,7 +9,13 @@
 
   <!-- Call-to-Actions -->
   <div class="cta-buttons">
+    @if(isLoggedIn){
+    <a routerLink="/topics" class="btn btn-primary">Topics</a>
+    <a routerLink="/add-topic" class="btn btn-primary">Add Topic</a>
+
+    } @else {
     <a routerLink="/login" class="btn btn-primary">Login</a>
     <a routerLink="/register" class="btn btn-secondary">Sign Up</a>
+    }
   </div>
 </main>

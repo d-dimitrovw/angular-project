@@ -18,7 +18,6 @@ export class RegisterComponent {
     }
 
     const {username, email, tel, password, rePassword} = form.value;
-    console.log({username, email, tel, password, rePassword});
     
 
     this.userService
