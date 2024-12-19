@@ -1,1 +1,7 @@
-<p>topics-list works!</p>
+@for (topic of topics; track $index) {
+<div class="topic-wrapper">
+  <div class="topic-title">{{ topic.themeName }}</div>
+  <div class="topic-date">{{ topic.created_at }}</div>
+  <div class="topic-author">{{ topic.userId.username }}</div>
+</div>
+}

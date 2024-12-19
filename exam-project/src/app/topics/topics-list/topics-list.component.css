@@ -1,0 +1,35 @@
+.topic-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
+    background: #11f4f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 15px;
+    margin: 10px 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.topic-wrapper:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.topic-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #234465;
+}
+
+.topic-date {
+    font-size: 0.9em;
+    color: #777;
+    text-align: center;
+}
+
+.topic-author {
+    font-size: 0.9em;
+    color: #555;
+    text-align: right;
+}
