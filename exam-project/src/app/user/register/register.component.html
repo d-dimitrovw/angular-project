@@ -3,24 +3,55 @@
   <form>
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" id="username" name="username" required />
+      <input
+        type="text"
+        id="username"
+        name="username"
+        ngModel
+        #inputUsername="ngModel"
+        required
+      />
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" required />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        ngModel
+        #inputEmail="ngModel"
+        required
+      />
     </div>
     <div class="form-group">
       <label for="tel">Telephone</label>
-      <input type="tel" id="tel" name="tel" />
+      <input type="tel" id="tel" name="tel" ngModel #inputTel="ngModel" />
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" required />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        ngModel
+        #inputPassword="ngModel"
+        required
+      />
     </div>
     <div class="form-group">
       <label for="rePassword">Confirm Password</label>
-      <input type="password" id="rePassword" name="rePassword" required />
+      <input
+        type="password"
+        id="rePassword"
+        name="rePassword"
+        ngModel
+        #inputRepassword="ngModel"
+        required
+      />
     </div>
     <button type="submit" class="register-button">Register</button>
   </form>
+  <p class="register-link">
+    Already have an account? <a routerLink="/login">Login here</a>.
+  </p>
 </div>
