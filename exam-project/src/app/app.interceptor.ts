@@ -17,14 +17,16 @@ export const appInterceptor: HttpInterceptorFn = (req, next) => {
 
   const router = inject(Router)
 
-  return next(req).pipe(
-    catchError((err) => {
-      if(err.status === 401) {
-        router.navigate(['/login'])
-      } else {
-        router.navigate(['/error'])
-      }
-      return [err]
-    })
-  );
+  // return next(req).pipe(
+  //   catchError((err) => {
+  //     if(err.status === 401) {
+  //       router.navigate(['/home'])
+  //     } else {
+  //       router.navigate(['/error'])
+  //     }
+  //     return [err]
+  //   }
+  // )
+  // );
+  return next(req);
 };

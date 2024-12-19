@@ -1,1 +1,33 @@
-<p>topic-details works!</p>
+<div class="topic-wrapper">
+  <div class="title">
+    <h1>{{ topic.themeName }}</h1>
+  </div>
+  <div class="author">
+    <!-- <h3>{{ topic.userId?.username }}</h3> -->
+  </div>
+  <div class="date">{{ topic.created_at }}</div>
+</div>
+<div class="comment-title">
+  <h2>Comments:</h2>
+</div>
+@for (comment of topic.posts; track $index) {
+<div class="comment-wrapper">
+  <div class="commentator">{{ comment.userId.username }}</div>
+  <div class="comment">
+    {{ comment.text }}
+  </div>
+</div>
+} @if(isLoggedIn){
+<form #form="ngForm" (ngSubmit)="submit(form)">
+  <div class="commentate">
+    <input
+      type="text"
+      name="comment"
+      ngModel
+      #inputComment="ngModel"
+      required
+    />
+    <button>Comment</button>
+  </div>
+</form>
+}

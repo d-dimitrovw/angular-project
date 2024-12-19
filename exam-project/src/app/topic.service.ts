@@ -25,4 +25,9 @@ createTopic(themeName: string, postText: string) {
   const payload = {themeName, postText}
   return this.http.post<Topic>(`/api/themes`, payload);
 }
+
+addTopicComment(id: string, postText: string) {
+  const payload = {postText}
+  return this.http.post<Comment>(`/api/themes/${id}`, payload);
+}
 }
