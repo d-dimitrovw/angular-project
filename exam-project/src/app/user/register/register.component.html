@@ -1,3 +1,9 @@
+@if(isLoggedIn){
+<div class="unauthorized">
+  <p>You are already registered and logged in!</p>
+  <p routerLink="/topics">Go to the topics page.</p>
+</div>
+} @else {
 <div class="register-container">
   <h1>Register</h1>
   <form class="register" [formGroup]="form" (ngSubmit)="register()">
@@ -89,3 +95,4 @@
     Already have an account? <a routerLink="/login">Login here</a>.
   </p>
 </div>
+}

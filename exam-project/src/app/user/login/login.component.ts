@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user-service.service';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -12,7 +12,10 @@ import { FormsModule, NgForm } from '@angular/forms';
 })
 export class LoginComponent {
   constructor(private userService: UserService, private router: Router) {}
-
+  get isLoggedIn() {
+    return this.userService.isLogged;
+  }
+  
   login(form: NgForm) {
     if (form.invalid) {
       return;

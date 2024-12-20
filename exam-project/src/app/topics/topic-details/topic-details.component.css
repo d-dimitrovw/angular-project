@@ -138,25 +138,24 @@ body {
 }
 
 .comment-actions button {
-    background-color: #ff4d4d; /* Bright red for delete action */
-    color: white; /* White text for contrast */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded edges */
-    padding: 8px 12px; /* Add spacing */
-    font-size: 0.9em; /* Slightly smaller font size */
-    font-weight: bold; /* Bold text */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+    background-color: #ff4d4d; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 8px 12px; 
+    font-size: 0.9em; 
+    font-weight: bold;
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.2s; 
 }
 
 .comment-actions button:hover {
-    background-color: #e63939; /* Darker red on hover */
-    transform: scale(1.05); /* Slight zoom effect */
+    background-color: #e63939; 
+    transform: scale(1.05); 
 }
 
 .comment-actions button:active {
-    background-color: #cc0000; /* Even darker red on click */
-    transform: scale(0.95); /* Slight shrink effect on click */
+    background-color: #cc0000; 
+    transform: scale(0.95); 
 }
-
 

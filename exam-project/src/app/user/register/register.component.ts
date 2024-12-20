@@ -29,6 +29,9 @@ export class RegisterComponent {
   })
   constructor(private userService: UserService, private router: Router, private fb: FormBuilder){}
   
+  get isLoggedIn() {
+    return this.userService.isLogged;
+  }
 
   register() {
     if (this.form.invalid) {

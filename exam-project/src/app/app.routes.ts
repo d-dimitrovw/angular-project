@@ -9,14 +9,13 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { AddTopicComponent } from './topics/add-topic/add-topic.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { AboutComponent } from './about/about.component';
+import { ReverseAuthGuard } from './guards/reverse-auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
-  //   { path: 'topics', component: TopicsListComponent},
-  //   { path: 'topics/:id', component: TopicDetailsComponent, canActivate: [AuthGuard] }
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
   {
     path: 'topics',
     children: [
