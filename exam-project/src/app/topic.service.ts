@@ -30,4 +30,8 @@ addTopicComment(id: string, postText: string) {
   const payload = {postText}
   return this.http.post<Comment>(`/api/themes/${id}`, payload);
 }
+
+deleteComment(topicId: string, commentId: string) {
+  return this.http.delete(`/api/themes/${topicId}/posts/${commentId}`);
+}
 }

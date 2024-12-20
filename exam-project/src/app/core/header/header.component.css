@@ -55,7 +55,7 @@ body {
 }
 
 .navigation a:hover {
-  background-color: #555;
+  background-color: #055481;
 }
 
 main {
@@ -77,9 +77,16 @@ main h2 {
   margin: 0.5em 0;
 }
 
+.logo-wrap h1 {
+  font-size: 2.5rem;
+  color: white;
+  font-family:'Bookman' !important;
+  margin: 0;
+}
+
 .logo-wrap > img {
   height: 20vh;
-  margin-right: 3vw;
+  margin-right: 1.5vw;
   margin-left: -2vw;
 }
 

@@ -4,12 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { TopicService } from '../../topic.service';
 import { UserService } from '../../user/user-service.service';
 import { FormsModule, NgForm } from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-topic-details',
   standalone: true,
-  imports: [FormsModule, DatePipe],
+  imports: [FormsModule, DatePipe, CommonModule],
   templateUrl: './topic-details.component.html',
   styleUrl: './topic-details.component.css'
 })
@@ -34,12 +34,18 @@ export class TopicDetailsComponent {
       });
     });
   }
+  get userId(): string {
+    return this.userService.user?._id || '';
+  }
 
-  // get username():string {
-  //   return this.userService.user?.username || '';
-  // }
+  onDeleteComment(commentId: string) {
+    const topicId = this.route.snapshot.params['themeId'];
+    this.topicService.deleteComment(topicId, commentId).subscribe(() => {
+      this.topicService.getSingleTopic(topicId).subscribe((topic) => {
+        this.topic = topic;
+  })})}
   ngOnInit(): void {
-
+    
     const id = this.route.snapshot.params['themeId'];
     
 

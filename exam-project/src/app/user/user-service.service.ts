@@ -24,7 +24,9 @@ export class UserService{
       this.user = user
     })
   }
-
+  currentUserId(): string | null {
+    return this.user ? this.user._id : null;
+  }
   login(email: string, password: string) {
 
     return this.http

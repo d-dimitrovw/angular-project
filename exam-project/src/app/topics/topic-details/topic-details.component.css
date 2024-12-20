@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    margin-bottom: 30px;
     margin: 0;
     padding: 0;
     background-color: #f9f9fb;
@@ -81,6 +82,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 60px!important;
     margin: 20px auto;
     padding: 10px 15px;
     max-width: 600px;
@@ -125,6 +127,36 @@ body {
 .commentate button:active {
     background: #1a2e4f;
     transform: scale(1);
+}
+
+.comment-date {
+    font-size: 0.8em; 
+    color: #888; 
+    text-align: right; 
+    margin-top: 5px; 
+    display: block; 
+}
+
+.comment-actions button {
+    background-color: #ff4d4d; /* Bright red for delete action */
+    color: white; /* White text for contrast */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded edges */
+    padding: 8px 12px; /* Add spacing */
+    font-size: 0.9em; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+.comment-actions button:hover {
+    background-color: #e63939; /* Darker red on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.comment-actions button:active {
+    background-color: #cc0000; /* Even darker red on click */
+    transform: scale(0.95); /* Slight shrink effect on click */
 }
 
 

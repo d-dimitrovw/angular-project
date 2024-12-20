@@ -16,6 +16,14 @@
   <div class="comment">
     {{ comment.text }}
   </div>
+  <div class="comment-date">
+    Posted on: {{ comment.created_at | date : "dd-mm-yyyy hh:mm" }}
+  </div>
+  @if(comment.userId._id === userId){
+  <div class="comment-actions">
+    <button (click)="onDeleteComment(comment._id)">Delete</button>
+  </div>
+  }
 </div>
 } @if(isLoggedIn){
 <form #form="ngForm" (ngSubmit)="submit(form)">
