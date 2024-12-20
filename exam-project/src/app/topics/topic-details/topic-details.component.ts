@@ -5,6 +5,7 @@ import { TopicService } from '../../topic.service';
 import { UserService } from '../../user/user-service.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
+import { User } from '../../types/user';
 
 @Component({
   selector: 'app-topic-details',
@@ -15,12 +16,17 @@ import { CommonModule, DatePipe } from '@angular/common';
 })
 export class TopicDetailsComponent {
   topic = {} as Topic;
+  creatorId: User | null = null;
   constructor(private route: ActivatedRoute, private topicService: TopicService, private userService: UserService) {}
 
   get isLoggedIn():boolean {
     return this.userService.isLogged;
   }
 
+  get username(): string | null {
+    return this.route.snapshot.queryParamMap.get('username');
+  }
+  
   submit(form: NgForm) {
     if (form.invalid) {
       return;
@@ -51,6 +57,9 @@ export class TopicDetailsComponent {
 
     this.topicService.getSingleTopic(id).subscribe((topic) => {
       this.topic = topic;
+      this.creatorId = topic.userId;
+      console.log(typeof this.userId);
+      console.log(typeof topic.userId);
       
     });
   }

@@ -1,5 +1,9 @@
 @for (topic of topics; track $index) {
-<div class="topic-wrapper" routerLink="/topics/{{ topic._id }}">
+<div
+  class="topic-wrapper"
+  [queryParams]="{ username: topic.userId.username }"
+  routerLink="/topics/{{ topic._id }}"
+>
   <div class="topic-title">{{ topic.themeName }}</div>
   <div class="topic-date">
     {{ topic.created_at | date : "yyyy-mm-dd hh:mm:ss" }}
