@@ -82,12 +82,15 @@ main h2 {
   color: white;
   font-family:'Bookman' !important;
   margin: 0;
+  cursor: pointer;
 }
 
 .logo-wrap > img {
   height: 20vh;
   margin-right: 1.5vw;
   margin-left: -2vw;
+  cursor: pointer;
+
 }
 
 
